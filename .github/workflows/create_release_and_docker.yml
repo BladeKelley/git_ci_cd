@@ -18,11 +18,9 @@ jobs:
   # Ensures we are only running when merge has occurred
   build:
     if: github.event.pull_request.merged == true
-    # The type of runner that the job will run on
-    runs-on: 
-      # create a docker container using ubuntu 18.04 base from Docker Hub
-      container: 
-        image: ubuntu:18.04
+    # create a docker container using ubuntu 18.04 base from Docker Hub
+    container: 
+      image: ubuntu:18.04
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
