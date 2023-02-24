@@ -1,3 +1,3 @@
 # git_ci_cd
 Testing CI/CD automation
-test 5
+test 6
