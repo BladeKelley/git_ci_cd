@@ -32,11 +32,14 @@ jobs:
       
       # Runs the setup script
       - name: Run setup.sh
-        run: ./setup.sh
+        run: |
+          chmod +x ./setup.sh
+          bash setup.sh
         shell: bash
 
       # Uploads the pickle file
       - name: upload artifacts
+        needs: Run setup.sh
         uses: actions/upload-artifact@v3
         with:
           name: pickle file
