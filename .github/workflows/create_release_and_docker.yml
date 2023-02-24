@@ -10,16 +10,16 @@ on:
     types:
       - closed
 
+# create a docker container using ubuntu 18.04 base from Docker Hub
+container: 
+  image: ubuntu:18.04
+
 # Create variables the flow can use
 env:
-  DOT_MODEL_DIRPATH: ".model" 
+  DOT_MODEL_DIRPATH: ".model"
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # Ensures we are only running when merge has occurred
-  # create a docker container using ubuntu 18.04 base from Docker Hub
-  container: 
-    image: ubuntu:18.04
-  
   build:
     if: github.event.pull_request.merged == true
     # The type of runner that the job will run on
@@ -28,6 +28,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+      
       # Runs the setup script
       - name: Run setup.sh
         run: setup.sh
