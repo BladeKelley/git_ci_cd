@@ -39,7 +39,6 @@ jobs:
 
       # Uploads the pickle file
       - name: upload artifacts
-        needs: Run setup.sh
         uses: actions/upload-artifact@v3
         with:
           name: pickle file
