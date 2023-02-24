@@ -12,13 +12,11 @@ on:
 
 # Create variables the flow can use
 env:
-  is_merged: github.event.pull_request.merged
   DOT_MODEL_DIRPATH: ".model" 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # Ensures we are only running when merge has occurred
-  if: $is_merged == true
-  
+  if: github.event.pull_request.merged == true
   # create a docker container using ubuntu 18.04 base from Docker Hub
   container: 
     image: ubuntu:18.04
@@ -33,6 +31,7 @@ jobs:
       # Runs the setup script
       - name: Run setup.sh
         run: setup.sh
+
       # Uploads the pickle file
       - name: upload artifacts
         uses: actions/upload-artifact@v3
@@ -41,4 +40,3 @@ jobs:
           path: |
             $DOT_MODEL_DIRPATH
             model.pckl
-      # 
