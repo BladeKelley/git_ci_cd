@@ -6,7 +6,7 @@ name: CI
 on:
   # Triggers the workflow on pull requests that have been closed for the "main" branch
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
     types:
       - closed
 
@@ -18,13 +18,15 @@ jobs:
   # Ensures we are only running when merge has occurred
   build:
     if: github.event.pull_request.merged == true
-    
+
     # The type of runner that the job will run on
     runs-on: ubuntu-18.04
-    
+
     # create a docker container using ubuntu 18.04 base from Docker Hub
-    container: 
+    container:
       image: ubuntu:18.04
+      options: --user root
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Install Python 3.8
